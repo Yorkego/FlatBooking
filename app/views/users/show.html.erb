@@ -1,0 +1,52 @@
+<h1><%= @user.name %></h1>
+
+<div class="profile-user-info">
+  <div class="profile-info-row">
+    <div class="profile-info-name"> Name </div>
+
+    <div class="profile-info-value">
+      <span><%= @user.name %></span>
+    </div>
+  </div>
+
+
+  <div class="profile-info-row">
+    <div class="profile-info-name"> Flats </div>
+
+    <div class="profile-info-value">
+      <span><%= @user.flats.count %></span>
+    </div>
+  </div>
+
+  <div class="profile-info-row">
+    <div class="profile-info-name"> Status </div>
+
+    <div class="profile-info-value">
+      <span><%= @user.admin ? "admin" : @user.vendor ? "vendor" : "visitor"%></span>
+    </div>
+  </div>
+
+  <div class="profile-info-row">
+    <div class="profile-info-name"> Joined </div>
+
+    <div class="profile-info-value">
+      <span><%= @user.created_at %></span>
+    </div>
+  </div>
+
+
+  <div class="profile-info-row">
+    <div class="profile-info-name"> Last Online </div>
+
+    <div class="profile-info-value">
+      <span><%= @user.current_sign_in_at ? time_ago_in_words(@user.current_sign_in_at) : "never" %> ago</span>
+    </div>
+  </div>
+</div>
+
+<div class="hr hr-8 dotted"></div>
+
+<% if @user.vendor %>
+  <h1> Vendor flats </h1>
+  <%= render @user.flats %>
+<% end %>

@@ -1,0 +1,28 @@
+<%= form_for @message, html: { multipart: true } do |form| %>
+  <% if message.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h5>Errors</h5>
+
+      <ul>
+      <% message.errors.full_messages.each do |mes| %>
+        <li><%= mes %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= form.hidden_field :recipient, value: recipient.id %>
+
+  <p>Send to: <%= recipient.name %> </p>
+
+  <div class="field form-group">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: 'form-control'  %>
+  </div>
+
+  <div class="actions form-group">
+    <%= form.submit "Save", class: 'btn btn-primary' %>
+    <%= link_to "Back", :back, class: 'btn btn-dark' %>
+  </div>
+<% end %>

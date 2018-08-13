@@ -1,0 +1,14 @@
+Today on site registrated <%= @vendor.size %> vendors, <%= @visitor.size %> visitors
+and vendors create <%= @flat.size %> flats and visitors booked flats <%= @booking.size %> times.<br/>
+<% if @flat.size > 0 %>
+  <h4>Flats</h4>
+  <% @flat.each do |flat| %>
+    <%= link_to flat.name, flat_path(flat) %>
+  <% end %>
+<% end %>
+<% if @booking.size > 0 %>
+  <h4>Bookings</h4>
+  <% @booking.each do |booking| %>
+    <%= booking.flat.name %> booked from <%= booking.start_date %> to <%= booking.end_date %> by <%= booking.user.name %></br/>
+  <% end %>
+<% end %>

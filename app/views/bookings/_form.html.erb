@@ -1,0 +1,22 @@
+<%= form_for [flat, Booking.new] do |form| %>
+
+  <% if flat.user != current_user %>
+    <div class="field form-group">
+      <%= form.label :notice, "Notice (tell about payment method, pets etc)" %>
+      <%= form.text_area :notice, class: 'form-control' %>
+    </div>
+  <% end %>
+
+
+  <%= form.label :date %>
+  <div class="field form-group input-daterange input-group">
+    <%= form.text_field :start_date, autocomplete: "off", class: "input-sm form-control" %>
+    <span class="input-group-addon">to</span>
+    <%= form.text_field :end_date, autocomplete: "off", class: "input-sm form-control" %>
+  </div>
+
+  <div class="actions form-group">
+    <%= form.submit "Book this flat", class: 'btn btn-primary' %>
+    <%= link_to "Back", :back, class: 'btn btn-default' %>
+  </div>
+<% end %>

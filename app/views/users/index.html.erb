@@ -1,0 +1,21 @@
+<h1>Vendors</h1>
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Flats</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @vendors.each do |vendor| %>
+        <tr>
+          <th scope="row"><%= vendor.id %></th>
+          <td><%= link_to vendor.name, user_path(vendor.id) %></td>
+          <td><%= vendor.flats.size %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

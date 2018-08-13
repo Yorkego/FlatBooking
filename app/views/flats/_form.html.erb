@@ -1,0 +1,53 @@
+<%= form_for @flat, html: { multipart: true } do |form| %>
+  <% if flat.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h5>Errors</h5>
+
+      <ul>
+      <% flat.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_area :name, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :city %>
+    <%= form.text_field :city,  autocomplete: "city", class: 'form-control'  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: 'form-control'  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control'  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :capacity %>
+    <%= form.number_field :capacity, class: 'form-control'  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :price, "Price" %>
+    <%= form.number_field :price, class: 'form-control'  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :image %>
+    <%= form.file_field :image, class: 'form-control'  %>
+  </div>
+
+  <div class="actions form-group">
+    <%= form.submit "Save", class: 'btn btn-primary' %>
+    <%= link_to "Back", :back, class: 'btn btn-dark' %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Messages</h1>
+<% @messages.each do |message| %>
+  <div class="messages">
+    <h2>Message from <%= link_to message.user.name, user_path(message.user) %> </h2>
+    <small>Send at <%= message.created_at %></small>
+    <p><%= message.body %></p>
+  </div>
+<% end %>

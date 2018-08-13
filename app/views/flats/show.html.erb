@@ -1,0 +1,33 @@
+
+<article class="flat">
+  <section class="flat-head">
+    <h1><%= @flat.name ? @flat.name : "Flat on #{@flat.address}" %></h1>
+    <small>
+      <time><%= @flat.created_at.to_date.strftime("%d %B, %Y")%></time>
+      vendor: <%= link_to @flat.user.name, user_path(@flat.user) %>
+        |
+        <%= link_to "Edit", edit_flat_path(@flat) %>
+        |
+        <%= link_to "Delete", flat_path(@flat), method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+    </small><br/>
+    <%= image_tag("address_icon", size: "12")%> <%= @flat.city ? @flat.city : '' %>, <%= @flat.address %>
+  </section>
+
+  <section class="flat-content">
+    <%= image_tag @flat.image.url(:large), class: 'img-show' if @flat.image? %>
+    <%= @flat.description %>
+  </section>
+
+  <section class="footer-content">
+    Capacity: <%= @flat.capacity %><br/>
+    Price: $<%= @flat.price %><br/>
+    Reserved: <%= @flat.reserved_date %>
+    <div id='calendar'></div>
+
+    <%#= link_to "Book this flat", new_flat_booking_path(@flat), class: 'btn btn-primary' %>
+  </section>
+</article>
+
+<%= render 'bookings/form', flat: @flat %>
+

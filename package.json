@@ -1,0 +1,12 @@
+{
+  "name": "FlatBooking",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "moment": "^2.22.2"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Yorkego <Yorkego1@ukr.net>",
+  "license": "MIT"
+}

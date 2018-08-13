@@ -1,0 +1,26 @@
+<article class="flat">
+  <section class="flat-head">
+      <h1><%= link_to flat.name, flat_path(flat) %></h1>
+    <small>
+      <time><%= flat.created_at.to_date.strftime("%d %B, %Y")%></time>
+      vendor: <%= link_to flat.user.name, user_path(flat.user) %>
+        |
+        <%= link_to "Edit", edit_flat_path(flat) %>
+        |
+        <%= link_to "Delete", flat_path(flat), method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+    </small><br/>
+    <%= image_tag("address_icon", size: "12")%> <%= flat.city ? flat.city : '' %>, <%= flat.address %>
+  </section>
+
+  <section class="flat-content clearfix">
+    <%= image_tag flat.image.url(:medium), class: 'img-thumbnail thumb' if flat.image? %>
+    <%= flat.description %>
+  </section>
+
+  <section class="footer-content">
+    Capacity: <%= flat.capacity %><br/>
+    Price: $<%= flat.price %>
+  </section>
+  <%= render flat.bookings %>
+</article>

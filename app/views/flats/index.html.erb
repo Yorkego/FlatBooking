@@ -1,0 +1,43 @@
+<div class="col-md-9">
+  <%= select_tag "filter[cat]", options_for_select([ ['Date', 'created_at'],
+   ['Price', 'price'] ],
+    params[:filter].present? ? params[:filter][:category] : nil ),
+    onchange: "submitOnChange()", class: 'submit-on-change' %>
+  <%= select_tag "filter[decriment]", options_for_select([ ['increase', 'ASC' ],
+   ['decrease', 'DESC' ]],  params[:filter].present? ? params[:filter][:direction] : nil ),
+    onchange: "submitOnChange()", class: 'submit-on-change'  %>
+  <h1>Flats</h1>
+
+  <%= render @flats %>
+
+  <%= paginate @flats %>
+</div>
+
+<div class="col-md-3">
+  <div class="search">
+    <h2>Screach flat</h2>
+    <%= form_tag(flats_path, method: :get) do %>
+      <%= hidden_field_tag "filter[category]", "created_at"   %>
+      <%= hidden_field_tag "filter[direction]", "ASC" %>
+      <div class="field form-group">
+        <%= label_tag "filter[name]", "Flat name" %>
+        <%= text_field_tag "filter[name]", params[:filter].present? ? params[:filter][:name] : nil , class: "form-control mr-sm-2" %>
+      </div>
+      <div class="field form-group">
+        <%= label_tag "filter[vendor]", "Vendor" %>
+        <%= text_field_tag "filter[vendor]", params[:filter].present? ? params[:filter][:vendor] : nil, class: "form-control mr-sm-2" %>
+      </div>
+      <div class="field form-group">
+        <%= label_tag "filter[city]", "City" %>
+        <%= select_tag "filter[city]", options_from_collection_for_select(Flat.select('DISTINCT city'), :city, :city, params[:filter].present? ? params[:filter][:city] : nil), include_blank: true, class: "form-control mr-sm-2" %>
+      </div>
+      <%= label_tag :date %>
+      <div class="field form-group input-daterange input-group">
+        <%= text_field_tag "filter[start_date]", params[:filter].present? ? params[:filter][:start_date] : nil, class: "input-sm form-control" %>
+        <span class="input-group-addon">to</span>
+        <%= text_field_tag "filter[end_date]", params[:filter].present? ? params[:filter][:end_date] : nil, class: "input-sm form-control" %>
+      </div>
+      <%= submit_tag 'Search', class: "btn btn-success my-2 my-sm-0" %>
+    <% end %>
+  </div>
+</div>

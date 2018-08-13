@@ -1,0 +1,12 @@
+<div class="bookings">
+  <h2>Book for <%= link_to booking.flat.name, flat_path(booking.flat) %> </h2>
+
+
+  <p>Date from <%= booking.start_date %> to <%= booking.end_date %></p>
+  <% if booking.user != current_user %>
+    <p>Tentor: <%= link_to booking.user.name, user_path(booking.user) %></p>
+  <% end %>
+  <%= link_to "Send message to vendor", new_message_path(recipient: booking.flat.user_id), class: "btn btn-primary" %>
+  <%= link_to "Cancel booking", [booking.flat, booking], method: :delete,
+          data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+</div>
