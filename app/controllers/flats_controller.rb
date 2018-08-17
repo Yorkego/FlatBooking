@@ -3,12 +3,18 @@ class FlatsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @flats = Flat.filter(params[:filter]).page(params[:page])
+    @flats = FlatsQuery.new.filter(params[:filter]).page(params[:page])
+    # @flats = Flat.filter(params[:filter]).page(params[:page])
   end
 
   def show
-    @reserved = @flat.reserved_date
+    @reserved = FlatsQuery.new.reserved_date_array(@flat.id)
     gon.id = params[:id]
+    respond_to do |format|
+        format.html
+        format.json { render json: @reserved }
+        format.js
+      end
   end
 
   def new

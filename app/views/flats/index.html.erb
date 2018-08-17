@@ -1,6 +1,6 @@
 <div class="col-md-9">
   <%= select_tag "filter[cat]", options_for_select([ ['Date', 'created_at'],
-   ['Price', 'price'] ],
+   ['Price', 'price'], ['Capacity', 'capacity'], ['Popular booking', 'popularity'] ],
     params[:filter].present? ? params[:filter][:category] : nil ),
     onchange: "submitOnChange()", class: 'submit-on-change' %>
   <%= select_tag "filter[decriment]", options_for_select([ ['increase', 'ASC' ],
@@ -17,7 +17,7 @@
   <div class="search">
     <h2>Screach flat</h2>
     <%= form_tag(flats_path, method: :get) do %>
-      <%= hidden_field_tag "filter[category]", "created_at"   %>
+      <%= hidden_field_tag "filter[category]", "created_at" %>
       <%= hidden_field_tag "filter[direction]", "ASC" %>
       <div class="field form-group">
         <%= label_tag "filter[name]", "Flat name" %>
@@ -33,9 +33,9 @@
       </div>
       <%= label_tag :date %>
       <div class="field form-group input-daterange input-group">
-        <%= text_field_tag "filter[start_date]", params[:filter].present? ? params[:filter][:start_date] : nil, class: "input-sm form-control" %>
+        <%= text_field_tag "filter[start_date]", params[:filter].present? ? params[:filter][:start_date] : nil, autocomplete: "off", class: "input-sm form-control" %>
         <span class="input-group-addon">to</span>
-        <%= text_field_tag "filter[end_date]", params[:filter].present? ? params[:filter][:end_date] : nil, class: "input-sm form-control" %>
+        <%= text_field_tag "filter[end_date]", params[:filter].present? ? params[:filter][:end_date] : nil, autocomplete: "off", class: "input-sm form-control" %>
       </div>
       <%= submit_tag 'Search', class: "btn btn-success my-2 my-sm-0" %>
     <% end %>

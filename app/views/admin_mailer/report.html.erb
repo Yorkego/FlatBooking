@@ -1,9 +1,9 @@
-Today on site registrated <%= @vendor.size %> vendors, <%= @visitor.size %> visitors
-and vendors create <%= @flat.size %> flats and visitors booked flats <%= @booking.size %> times.<br/>
+Today on site registrated <%= @vendor.size %> vendors, <%= @visitor.size %> visitors,
+vendors create <%= @flat.size %> flats and visitors booked flats <%= @booking.size %> times.<br/>
 <% if @flat.size > 0 %>
   <h4>Flats</h4>
   <% @flat.each do |flat| %>
-    <%= link_to flat.name, flat_path(flat) %>
+    <%= flat.name %> created by <%= flat.user.name %>
   <% end %>
 <% end %>
 <% if @booking.size > 0 %>

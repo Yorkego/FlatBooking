@@ -8,9 +8,8 @@ $(document).on('turbolinks:load', function(){
       // your event source
       {
         url: url,
-        color: 'white',     // an option!
-        textColor: 'red', // an option!
-
+        color: 'red',     // an option!
+        textColor: 'black' // an option!
       }
 
       // any other event sources...
@@ -30,4 +29,4 @@ $(document).on('change','.submit-on-change',function(){
   $("#filter_category").val($("#filter_cat").val());
   $("#filter_direction").val($("#filter_decriment").val());
   $(".search > form").submit();
-  });
+});

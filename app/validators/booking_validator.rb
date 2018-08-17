@@ -4,11 +4,18 @@ class BookingValidator < ActiveModel::Validator
       record.end_date = record.start_date
     end
     if record.start_date.present? && record.end_date.present?
-      (record.start_date..record.end_date).each do |date|
-        if record.flat.reserved_date.include?(date)
-          record.errors.add :base, "#{date} is already reserved"
-        end
+      if record.start_date > record.end_date
+        record.errors.add :base, "Check out date can not be less than check in date"
       end
+      # (record.start_date..record.end_date).each do |date|
+      #   if record.flat.reserved_date.include?(date)
+      #     record.errors.add :base, "#{date} is already reserved"
+      #   end
+      # end
+      if FlatsQuery.new.is_date_reserved?(record.start_date, record.end_date, record.flat.id)
+        record.errors.add :base, "Your date is already reserved"
+      end
+
     end
   end
 end
