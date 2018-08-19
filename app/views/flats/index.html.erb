@@ -31,6 +31,10 @@
         <%= label_tag "filter[city]", "City" %>
         <%= select_tag "filter[city]", options_from_collection_for_select(Flat.select('DISTINCT city'), :city, :city, params[:filter].present? ? params[:filter][:city] : nil), include_blank: true, class: "form-control mr-sm-2" %>
       </div>
+      <div class="field form-group">
+        <%= label_tag "filter[capacity]", "Capacity" %>
+        <%= text_field_tag "filter[capacity]", params[:filter].present? ? params[:filter][:capacity] : nil, class: "form-control mr-sm-2" %>
+      </div>
       <%= label_tag :date %>
       <div class="field form-group input-daterange input-group">
         <%= text_field_tag "filter[start_date]", params[:filter].present? ? params[:filter][:start_date] : nil, autocomplete: "off", class: "input-sm form-control" %>

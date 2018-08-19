@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_secret, only: [:secret, :get_secret_email]
+  before_action :authenticate_user!, only: [:secret, :get_secret_email]
 
   def index
     @vendors = User.where(vendor: true)

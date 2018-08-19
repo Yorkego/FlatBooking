@@ -9,16 +9,16 @@ class Flat < ApplicationRecord
 
   validates :name, :city, :address, :description, :capacity, presence: true
 
-  scope :order_by, ->(category, direction) {
-    case category
-    when 'created_at'
-      order("flats.created_at #{direction}")
-    when 'price'
-      order("flats.price #{direction}")
-    when 'capacity'
-      order("flats.capacity #{direction}")
-    when 'popularity'
-      left_outer_joins(:bookings).order("bookings.count #{direction} NULLS LAST").group('flats.id')
-    end
-   }
+  # scope :order_by, ->(category, direction) {
+  #   case category
+  #   when 'created_at'
+  #     order("flats.created_at #{direction}")
+  #   when 'price'
+  #     order("flats.price #{direction}")
+  #   when 'capacity'
+  #     order("flats.capacity #{direction}")
+  #   when 'popularity'
+  #     left_outer_joins(:bookings).order("bookings.count #{direction} NULLS LAST").group('flats.id')
+  #   end
+  #  }
 end

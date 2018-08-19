@@ -1,5 +1,5 @@
 class BookingService
-
+  # not using now
   def initialize(booking)
       @booking = booking
   end
