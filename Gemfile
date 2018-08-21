@@ -107,3 +107,6 @@ gem 'whenever', require: false
 
 #parse date in js
 gem 'gon'
+
+#for render json
+gem 'active_model_serializers'

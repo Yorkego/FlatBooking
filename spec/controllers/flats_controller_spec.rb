@@ -53,20 +53,20 @@ RSpec.describe FlatsController, type: :controller do
 
   describe "POST create" do
     context "with valid attributes" do
-      it "creates a new contact" do
+      it "creates a new flat" do
         expect{
           post :create, params: attributes_for(:flat)
         }.to change(Flat,:count).by(1)
       end
 
-      it "redirects to the new contact" do
+      it "redirects to the new flat" do
         post :create, params: attributes_for(:flat)
         response.should redirect_to Flat.last
       end
     end
 
     context "with invalid attributes" do
-      it "does not save the new contact" do
+      it "does not save the new flat" do
         expect{
           post :create, params: attributes_for(:flat, name: '')
         }.to_not change(Flat,:count)

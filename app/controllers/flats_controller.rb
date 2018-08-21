@@ -8,11 +8,12 @@ class FlatsController < ApplicationController
   end
 
   def show
-    @reserved = FlatsQuery.new.reserved_date_array(@flat.id)
+    # @reserved = FlatsQuery.new.reserved_date_array(@flat.id)
+    @bookings = Booking.where(flat_id: params[:id])
     gon.id = params[:id]
     respond_to do |format|
         format.html
-        format.json { render json: @reserved }
+        format.json { render json: @bookings }
         format.js
       end
   end
