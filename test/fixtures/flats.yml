@@ -4,8 +4,20 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  name: Best flat
+  city: Uzhgorod
+  address: Kapushanska Street 54
+  description: Very nice flat
+  capacity: 2
+  price: 32
+  user: one
+
+two:
+  name: Modern Apartments
+  city: Mukacheve
+  address: Silvaya Street 9
+  description: Very nice flat
+  capacity: 2
+  price: 46
+  user: one

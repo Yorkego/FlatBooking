@@ -24,7 +24,6 @@ class BookingsController < ApplicationController
 
     if @booking.save
       CreateBookingMailer.new_booking(@booking).deliver unless @booking.flat.user == current_user
-      BookingService.new(@booking).add_reserved_date
 
       flash[:notice] = "Book was successfully created."
 
@@ -37,7 +36,6 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    BookingService.new(@booking).remove_reserved_date
     flash[:notice] = "Book was successfully destroyed."
     redirect_to root_url
   end

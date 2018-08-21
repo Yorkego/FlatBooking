@@ -26,7 +26,7 @@ class FlatsController < ApplicationController
   end
 
   def create
-    @flat = current_user.flats.build(flat_params)
+    @flat = current_user.flats.build(flat_params) if current_user.vendor
     authorize @flat
 
     if @flat.save

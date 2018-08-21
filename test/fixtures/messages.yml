@@ -2,12 +2,10 @@
 
 one:
   user: one
-  recipient: 1
-  type: 
+  recipient: 2
   body: MyText
 
 two:
   user: two
   recipient: 1
-  type: 
   body: MyText
