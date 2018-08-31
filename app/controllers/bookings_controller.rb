@@ -2,11 +2,12 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
+
   def index
     @bookings = Booking.where(user_id: current_user.id)
   end
 
-  def vedor_booking
+  def vendor_booking
     @bookings = Booking.joins(:flat).where(flats: { user_id: current_user.id })
   end
 
@@ -21,12 +22,9 @@ class BookingsController < ApplicationController
   def create
     @booking = current_user.bookings.build(booking_params)
     @booking.flat_id = params[:flat_id]
-
     if @booking.save
       CreateBookingMailer.new_booking(@booking).deliver unless @booking.flat.user == current_user
-
       flash[:notice] = "Book was successfully created."
-
       redirect_to root_url
     else
       flash[:alert] =  @booking.errors.full_messages
@@ -36,6 +34,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    DestoyBookingMailer.delete_booking(@booking, current_user).deliver unless @booking.flat.user == @booking.user
     flash[:notice] = "Book was successfully destroyed."
     redirect_to root_url
   end

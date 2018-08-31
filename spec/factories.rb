@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :message do
+    body { 'some text' }
+  end
+  factory :booking do
+    notice { 'credit card' }
+    start_date { Date.today }
+    end_date { Date.today + 1.day }
+  end
   sequence(:email) { |n| "person#{n}@example.com" }
   sequence(:name) { |n| "John#{n}" }
   factory :user do
@@ -33,6 +41,5 @@ FactoryBot.define do
     description { 'Nice flat!' }
     price { 35 }
     capacity { 2 }
-    vendor
   end
 end

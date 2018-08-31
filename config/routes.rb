@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   resources :users
   get '/secret', to: 'users#secret'
-  get '/bookings_on_my_flat', to: 'bookings#vedor_booking'
+  get '/bookings_on_my_flat', to: 'bookings#vendor_booking'
   get '/get_secret_email', to: 'users#get_secret_email'
 end

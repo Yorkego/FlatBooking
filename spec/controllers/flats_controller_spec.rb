@@ -1,7 +1,10 @@
 require 'rails_helper'
 
+
 RSpec.describe FlatsController, type: :controller do
   login_vendor
+  let(:user) { create(:vendor, name: 'Vendor') }
+  let(:flat) { user.flats.create(attributes_for(:flat)) }
   context 'GET #index' do
     it 'returns a success response' do
       get :index
@@ -15,17 +18,11 @@ RSpec.describe FlatsController, type: :controller do
 
   context 'GET #show' do
     it 'returns a success response' do
-      create(:vendor) do |user|
-        user.flats.create(attributes_for(:flat))
-      end
-      get :show, params: { id: Flat.last.to_param }
+      get :show, params: { id: flat }
       expect(response).to be_successful
     end
     it "renders the #show view" do
-      create(:vendor) do |user|
-        user.flats.create(attributes_for(:flat))
-      end
-      get :show, params: { id: Flat.last.to_param }
+      get :show, params: { id: flat }
       response.should render_template :show
     end
   end
@@ -51,16 +48,16 @@ RSpec.describe FlatsController, type: :controller do
     end
   end
 
-  describe "POST create" do
+  describe "POST #create" do
     context "with valid attributes" do
       it "creates a new flat" do
         expect{
-          post :create, params: attributes_for(:flat)
+          process :create, method: :post, params: { flat: attributes_for(:flat), user_id: user.id }
         }.to change(Flat,:count).by(1)
       end
 
       it "redirects to the new flat" do
-        post :create, params: attributes_for(:flat)
+        post :create, params: { flat: attributes_for(:flat), user_id: user.id }
         response.should redirect_to Flat.last
       end
     end
@@ -68,12 +65,12 @@ RSpec.describe FlatsController, type: :controller do
     context "with invalid attributes" do
       it "does not save the new flat" do
         expect{
-          post :create, params: attributes_for(:flat, name: '')
+          post :create, params: { flat: attributes_for(:flat, name: ''), user_id: user.id }
         }.to_not change(Flat,:count)
       end
 
       it "re-renders the new method" do
-        post :create, params: attributes_for(:flat, name: '')
+        post :create, params: { flat: attributes_for(:flat, name: ''), user_id: user.id }
         response.should render_template :new
       end
     end
@@ -81,17 +78,19 @@ RSpec.describe FlatsController, type: :controller do
 
   context 'DELETE #destroy' do
     it 'removes flat from table' do
-      create(:vendor) do |user|
-        user.flats.create(attributes_for(:flat))
-      end
-      expect { delete :destroy, params: { id: Flat.last.to_param } }.to change { Flat.count }.by(-1)
+      user = create(:vendor)
+      sign_in user
+      user.flats.create(attributes_for(:flat))
+      expect { delete :destroy, params: { id: Flat.last } }.to change { Flat.count }.by(-1)
     end
-    it "redirects to the flats page upon destroy" do
-      create(:vendor) do |user|
-        user.flats.create(attributes_for(:flat))
-      end
-      delete :destroy, params: { id: Flat.last.to_param }
+    it "redirects to the root_url upon destroy" do
+      user = create(:vendor)
+      sign_in user
+      user.flats.create(attributes_for(:flat))
+      delete :destroy, params: { id: Flat.last }
       response.should redirect_to flats_url
     end
   end
+
 end
+

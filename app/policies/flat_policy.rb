@@ -22,21 +22,19 @@ class FlatPolicy
     @user.vendor
   end
 
+  def edit?
+    update?
+  end
+
   def update?
-    return true if user.present? && user == flat.user
+    @user == @record.user
   end
 
   def destroy?
-    return true if user.present? && user == flat.user
+    @user == @record.user
   end
 
   def secret?
     @user.admin
-  end
-
-  private
-
-  def flat
-    record
   end
 end

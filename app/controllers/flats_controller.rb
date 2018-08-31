@@ -24,6 +24,7 @@ class FlatsController < ApplicationController
   end
 
   def edit
+    authorize @flat
   end
 
   def create
@@ -41,6 +42,7 @@ class FlatsController < ApplicationController
   end
 
   def update
+    authorize @flat
     if @flat.update(flat_params)
       flash[:notice] = 'Flat was successfully updated.'
       redirect_to @flat
@@ -51,6 +53,7 @@ class FlatsController < ApplicationController
   end
 
   def destroy
+    authorize @flat
     @flat.destroy
     redirect_to flats_url
   end

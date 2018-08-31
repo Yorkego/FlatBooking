@@ -3,7 +3,7 @@ class MessageMailer < ApplicationMailer
     @message = message
     @recipient = recipient
 
-    mail to: recipient.email, subject: "Tenant #{@message.user.name} send you a message"
+    mail to: recipient.email, subject: "#{@message.user.name} send you a message"
   end
 end
 
