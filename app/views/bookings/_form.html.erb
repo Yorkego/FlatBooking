@@ -1,3 +1,10 @@
+<h2>Booking</h2>
+<div class="field form-group">
+  <label class="radio-inline"><input class="form-on-change" type="radio" name="optradio" checked>reserve</label>
+  <label class="radio-inline"><input class="form-on-change" type="radio" name="optradio">pay from card for days</label>
+  <label class="radio-inline"><input class="form-on-change" type="radio" name="optradio">pay from card for month</label>
+</div>
+
 <%= form_for [flat, Booking.new] do |form| %>
 
   <% if flat.user != current_user %>
@@ -6,7 +13,6 @@
       <%= form.text_area :notice, class: 'form-control' %>
     </div>
   <% end %>
-
 
   <%= form.label :date %>
   <div class="field form-group input-daterange input-group">

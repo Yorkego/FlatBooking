@@ -52853,3 +52853,559 @@ Processing by FlatsController#index as HTML
 Completed 200 OK in 355ms (Views: 343.7ms | ActiveRecord: 7.0ms)
 
 
+Started GET "/flats/1.json" for 127.0.0.1 at 2018-10-12 17:38:59 +0300
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/york/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by FlatsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (2.2ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (1.6ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.53ms)
+Completed 200 OK in 101ms (Views: 35.7ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/flats" for 127.0.0.1 at 2018-10-12 17:39:03 +0300
+Processing by FlatsController#index as HTML
+  Rendering flats/index.html.erb within layouts/application
+  [1m[36mFlat Load (0.7ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" ORDER BY flats.created_at ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/flats/index.html.erb:11
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  Rendered collection of flats/_flat.html.erb [5 times] (296.6ms)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:13
+  [1m[36mFlat Load (0.4ms)[0m  [1m[34mSELECT DISTINCT city FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:32
+  Rendered flats/index.html.erb within layouts/application (365.7ms)
+Completed 200 OK in 735ms (Views: 719.0ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-12 17:39:08 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (2.3ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (20.1ms)
+  Rendered flats/show.html.erb within layouts/application (45.5ms)
+Completed 200 OK in 246ms (Views: 229.3ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539355145379" for 127.0.0.1 at 2018-10-12 17:39:08 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539355145379", "id"=>"1"}
+  [1m[36mFlat Load (0.3ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 17:41:45 +0300
+Processing by FlatsController#index as HTML
+  Rendering flats/index.html.erb within layouts/application
+  [1m[36mFlat Load (5.0ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" ORDER BY flats.created_at ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/flats/index.html.erb:11
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  Rendered collection of flats/_flat.html.erb [5 times] (46.6ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:13
+  [1m[36mFlat Load (0.6ms)[0m  [1m[34mSELECT DISTINCT city FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:32
+  Rendered flats/index.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 267ms (Views: 254.2ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/flats/2" for 127.0.0.1 at 2018-10-12 17:41:47 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFlat Load (1.1ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (7.8ms)
+  Rendered flats/show.html.erb within layouts/application (27.8ms)
+Completed 200 OK in 263ms (Views: 251.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/flats/2.json?start=2018-09-30&end=2018-11-11&_=1539355145380" for 127.0.0.1 at 2018-10-12 17:41:47 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539355145380", "id"=>"2"}
+  [1m[36mFlat Load (0.3ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 2]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.05ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 17:41:50 +0300
+Processing by FlatsController#index as HTML
+  Rendering flats/index.html.erb within layouts/application
+  [1m[36mFlat Load (1.6ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" ORDER BY flats.created_at ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/flats/index.html.erb:11
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  Rendered collection of flats/_flat.html.erb [5 times] (38.4ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:13
+  [1m[36mFlat Load (0.5ms)[0m  [1m[34mSELECT DISTINCT city FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:32
+  Rendered flats/index.html.erb within layouts/application (65.9ms)
+Completed 200 OK in 288ms (Views: 277.1ms | ActiveRecord: 5.3ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8115692404137957555)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddTypeToBookings (20181012144935)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "bookings" ADD "type" character varying[0m
+  ↳ db/migrate/20181012144935_add_type_to_bookings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181012144935"]]
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8115692404137957555)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/flats/1.json" for 127.0.0.1 at 2018-10-14 19:26:29 +0300
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/york/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by FlatsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (0.9ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (1.7ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.55ms)
+Completed 200 OK in 77ms (Views: 27.6ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 19:26:34 +0300
+Processing by FlatsController#index as HTML
+  Rendering flats/index.html.erb within layouts/application
+  [1m[36mFlat Load (0.9ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" ORDER BY flats.created_at ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/flats/index.html.erb:11
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  Rendered collection of flats/_flat.html.erb [5 times] (314.1ms)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:13
+  [1m[36mFlat Load (0.4ms)[0m  [1m[34mSELECT DISTINCT city FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:32
+  Rendered flats/index.html.erb within layouts/application (337.9ms)
+Completed 200 OK in 725ms (Views: 712.8ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:30:07 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (1.1ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (56.1ms)
+  Rendered flats/show.html.erb within layouts/application (80.1ms)
+Completed 200 OK in 301ms (Views: 290.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534395768" for 127.0.0.1 at 2018-10-14 19:30:07 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534395768", "id"=>"1"}
+  [1m[36mFlat Load (0.4ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.53ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:30:44 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (1.4ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (9.5ms)
+  Rendered flats/show.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 304ms (Views: 292.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534645336" for 127.0.0.1 at 2018-10-14 19:30:45 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534645336", "id"=>"1"}
+  [1m[36mFlat Load (0.2ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:30:47 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (0.9ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (6.8ms)
+  Rendered flats/show.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 281ms (Views: 273.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534647399" for 127.0.0.1 at 2018-10-14 19:30:47 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534647399", "id"=>"1"}
+  [1m[36mFlat Load (0.3ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.59ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:31:09 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (0.9ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (2.9ms)
+  Rendered flats/show.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 243ms (Views: 238.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534669890" for 127.0.0.1 at 2018-10-14 19:31:09 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534669890", "id"=>"1"}
+  [1m[36mFlat Load (0.2ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.59ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:31:46 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (0.8ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (6.7ms)
+  Rendered flats/show.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 294ms (Views: 284.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534706629" for 127.0.0.1 at 2018-10-14 19:31:46 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534706629", "id"=>"1"}
+  [1m[36mFlat Load (0.2ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.47ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:32:00 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (0.7ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (8.1ms)
+  Rendered flats/show.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 287ms (Views: 277.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534720383" for 127.0.0.1 at 2018-10-14 19:32:00 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534720383", "id"=>"1"}
+  [1m[36mFlat Load (0.2ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:32:29 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (0.9ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (8.8ms)
+  Rendered flats/show.html.erb within layouts/application (31.4ms)
+Completed 200 OK in 359ms (Views: 347.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534750157" for 127.0.0.1 at 2018-10-14 19:32:30 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534750157", "id"=>"1"}
+  [1m[36mFlat Load (0.3ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.23ms)
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:35:20 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (1.0ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (5.3ms)
+  Rendered flats/show.html.erb within layouts/application (46.4ms)
+Completed 200 OK in 319ms (Views: 297.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534921010" for 127.0.0.1 at 2018-10-14 19:35:21 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534921010", "id"=>"1"}
+  [1m[36mFlat Load (0.2ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:35:43 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (0.7ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (8.4ms)
+  Rendered flats/show.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 303ms (Views: 292.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534943901" for 127.0.0.1 at 2018-10-14 19:35:44 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534943901", "id"=>"1"}
+  [1m[36mFlat Load (0.3ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:35:57 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (1.3ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (10.2ms)
+  Rendered flats/show.html.erb within layouts/application (29.8ms)
+Completed 200 OK in 294ms (Views: 283.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539534957404" for 127.0.0.1 at 2018-10-14 19:35:57 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539534957404", "id"=>"1"}
+  [1m[36mFlat Load (0.5ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 19:39:27 +0300
+Processing by FlatsController#index as HTML
+  Rendering flats/index.html.erb within layouts/application
+  [1m[36mFlat Load (1.9ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" ORDER BY flats.created_at ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/flats/index.html.erb:11
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  Rendered collection of flats/_flat.html.erb [5 times] (46.9ms)
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:13
+  [1m[36mFlat Load (0.4ms)[0m  [1m[34mSELECT DISTINCT city FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:32
+  Rendered flats/index.html.erb within layouts/application (71.7ms)
+Completed 200 OK in 283ms (Views: 269.1ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/flats?utf8=%E2%9C%93&filter%5Bcategory%5D=price&filter%5Bdirection%5D=ASC&filter%5Bname%5D=&filter%5Bvendor%5D=&filter%5Bcity%5D=&filter%5Bcapacity%5D=&filter%5Bstart_date%5D=&filter%5Bend_date%5D=" for 127.0.0.1 at 2018-10-14 19:39:28 +0300
+Processing by FlatsController#index as HTML
+  Parameters: {"utf8"=>"✓", "filter"=>{"category"=>"price", "direction"=>"ASC", "name"=>"", "vendor"=>"", "city"=>"", "capacity"=>"", "start_date"=>"", "end_date"=>""}}
+  Rendering flats/index.html.erb within layouts/application
+  [1m[36mFlat Load (0.6ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" ORDER BY flats.price ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/flats/index.html.erb:11
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  Rendered collection of flats/_flat.html.erb [5 times] (18.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:13
+  [1m[36mFlat Load (0.4ms)[0m  [1m[34mSELECT DISTINCT city FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:32
+  Rendered flats/index.html.erb within layouts/application (35.9ms)
+Completed 200 OK in 236ms (Views: 231.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/flats?utf8=%E2%9C%93&filter%5Bcategory%5D=created_at&filter%5Bdirection%5D=ASC&filter%5Bname%5D=&filter%5Bvendor%5D=&filter%5Bcity%5D=&filter%5Bcapacity%5D=&filter%5Bstart_date%5D=&filter%5Bend_date%5D=" for 127.0.0.1 at 2018-10-14 19:39:32 +0300
+Processing by FlatsController#index as HTML
+  Parameters: {"utf8"=>"✓", "filter"=>{"category"=>"created_at", "direction"=>"ASC", "name"=>"", "vendor"=>"", "city"=>"", "capacity"=>"", "start_date"=>"", "end_date"=>""}}
+  Rendering flats/index.html.erb within layouts/application
+  [1m[36mFlat Load (1.1ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" ORDER BY flats.created_at ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/flats/index.html.erb:11
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  Rendered collection of flats/_flat.html.erb [5 times] (15.7ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:13
+  [1m[36mFlat Load (0.4ms)[0m  [1m[34mSELECT DISTINCT city FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:32
+  Rendered flats/index.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 226ms (Views: 222.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/flats?utf8=%E2%9C%93&filter%5Bcategory%5D=created_at&filter%5Bdirection%5D=ASC&filter%5Bname%5D=&filter%5Bvendor%5D=&filter%5Bcity%5D=&filter%5Bcapacity%5D=&filter%5Bstart_date%5D=&filter%5Bend_date%5D=" for 127.0.0.1 at 2018-10-14 19:42:50 +0300
+Processing by FlatsController#index as HTML
+  Parameters: {"utf8"=>"✓", "filter"=>{"category"=>"created_at", "direction"=>"ASC", "name"=>"", "vendor"=>"", "city"=>"", "capacity"=>"", "start_date"=>"", "end_date"=>""}}
+  Rendering flats/index.html.erb within layouts/application
+  [1m[36mFlat Load (2.3ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" ORDER BY flats.created_at ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/flats/index.html.erb:11
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/flats/_flat.html.erb:10
+  Rendered collection of flats/_flat.html.erb [5 times] (55.2ms)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:13
+  [1m[36mFlat Load (0.6ms)[0m  [1m[34mSELECT DISTINCT city FROM "flats"[0m
+  ↳ app/views/flats/index.html.erb:32
+  Rendered flats/index.html.erb within layouts/application (89.8ms)
+Completed 200 OK in 338ms (Views: 324.2ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/flats/1" for 127.0.0.1 at 2018-10-14 19:42:51 +0300
+Processing by FlatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFlat Load (0.9ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  Rendering flats/show.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/flats/show.html.erb:7
+  Rendered bookings/_form.html.erb (4.4ms)
+  Rendered flats/show.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 307ms (Views: 299.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/flats/1.json?start=2018-09-30&end=2018-11-11&_=1539535370856" for 127.0.0.1 at 2018-10-14 19:42:51 +0300
+Processing by FlatsController#show as JSON
+  Parameters: {"start"=>"2018-09-30", "end"=>"2018-11-11", "_"=>"1539535370856", "id"=>"1"}
+  [1m[36mFlat Load (0.4ms)[0m  [1m[34mSELECT  "flats".* FROM "flats" WHERE "flats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/flats_controller.rb:68
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."flat_id" = $1[0m  [["flat_id", 1]]
+  ↳ app/controllers/flats_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.9ms)
+
+

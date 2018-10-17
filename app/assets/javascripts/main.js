@@ -30,3 +30,7 @@ $(document).on('change','.submit-on-change',function(){
   $("#filter_direction").val($("#filter_decriment").val());
   $(".search > form").submit();
 });
+
+$(document).on('change','.form-on-change',function(){
+
+});

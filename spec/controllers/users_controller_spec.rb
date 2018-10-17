@@ -30,7 +30,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  context 'GET #get_secret_emailt' do
+  context 'GET #get_secret_email' do
     it 'returns a success response' do
       get :get_secret_email
       response.should redirect_to :secret
